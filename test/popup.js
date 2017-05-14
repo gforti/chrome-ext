@@ -1,18 +1,22 @@
-document.addEventListener('DOMContentLoaded', ()=> {
-  let checkPageButton = document.getElementById('checkPage');
-  checkPageButton.addEventListener('click', ()=> {
-      
-    chrome.tabs.getSelected(null, (tab)=> {
-      let d = document;
-
-      let f = d.createElement('p');
-      f.innerHTML = tab.url;
-      d.body.appendChild(f);
-    });
+window.document.addEventListener('DOMContentLoaded', ()=> {
+  let checkPageButton = window.document.querySelector('#checkPage')
+  let labSel = window.document.querySelector('select[name="lab"]')
+  checkPageButton.addEventListener('click', function() {
+    let file = labSel.options[ labSel.selectedIndex ].value + '.js'
     
-    chrome.tabs.executeScript({file: "content.js"}, (results) => {});
+    chrome.tabs.query({'active': true, 'currentWindow': true}, (tabs)=> {
+        window.document.body.insertAdjacentHTML('beforeend', '<p>Reviewing '+tabs[0].url+'</p>')     
+    })     
+    
+    chrome.tabs.insertCSS({'file': 'labs.css'}, ()=>{
+        chrome.tabs.executeScript({'file': 'lab-api.js'}, ()=>{
+            chrome.tabs.executeScript({'file': file})
+        })
+    })
     
     
     
-  }, false);
-}, false);
+    
+    
+  })
+})

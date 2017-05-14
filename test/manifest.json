@@ -1,8 +1,8 @@
 {
   "manifest_version": 2,
   "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'",
-  "name": "GTmetrix Analyzer Plugin",
-  "description": "This extension will analyze a page using GTmetrix",
+  "name": "Code Analyzer Plugin",
+  "description": "This extension will analyze a page using JS",
   "version": "1.0",
 
   "browser_action": {
