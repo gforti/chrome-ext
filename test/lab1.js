@@ -1,12 +1,5 @@
 (() => {
 
-    console.log(window.scriptexecutedLab1);
-    
-    if (window.scriptexecutedLab1) {
-        return true;
-    }
-        window.scriptexecutedLab1 = true;
-        
    
             let input = window.document.querySelector('input[name="phone"')
             let ev = new Event("blur", {"bubbles": true, "cancelable": false})
@@ -15,7 +8,7 @@
                 window.labApi.insertMessage('input Phone found')
             } else {
                 window.labApi.insertMessage('input Phone NOT found', false)
-                return
+                return window.labApi.scriptCompleted()
             }
 
             window.labApi.typeInValue('abc', input).then((r) => {
@@ -38,8 +31,9 @@
                 return window.labApi.typeInValue('12345', input).then((r) => {
                     console.log('complete')
                     console.log(r)
-                    window.scriptexecutedLab1 = false;
                 })
+            }).then(()=>{
+                return window.labApi.scriptCompleted()
             })
 
         

@@ -24,8 +24,14 @@
         'typeInValue' : typeInValue,
         'uuid' : uuid,
         'insertMessage' : insertMessage,
+        'scriptCompleted' : scriptCompleted,
     }
     
+    
+    function scriptCompleted() {
+        chrome.runtime.sendMessage({type:'script_completed'})
+        return true
+    }
     
     function insertMessage(msg, pass = true) {
         let html = '<p class="'+ (!!pass ? 'pass' : 'fail') +'">' + msg + '</p>'
