@@ -6,7 +6,6 @@
         
             let input = window.document.querySelector('#num')
             let button = window.document.querySelector('#btnGenerate')
-            let button2 = window.document.querySelector('#btnGenerate2')
             let div = window.document.querySelector('#wrapper')
             let ev = new Event("click", {"bubbles": true, "cancelable": false})
            
@@ -36,10 +35,13 @@
 
             function runTest() {
                 window.labApi.typeInValue('3', input).then((text) => {
-                    button.dispatchEvent(ev)
+                   // button.dispatchEvent(ev)
+                    
+                    return window.labApi.triggerElementEvent(button, 'click')
+                    
                 }).then(() => {
                     return window.labApi.typeInValue('5', input).then((text) => {
-                        button.dispatchEvent(ev)
+                        return window.labApi.triggerElementEvent(button, 'click')
                     })
                 }).then(()=>{
                     return window.labApi.scriptCompleted()
