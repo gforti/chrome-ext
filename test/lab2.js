@@ -7,8 +7,7 @@
             let input = window.document.querySelector('#num')
             let button = window.document.querySelector('#btnGenerate')
             let div = window.document.querySelector('#wrapper')
-            let ev = new Event("click", {"bubbles": true, "cancelable": false})
-           
+            
             const config = {attributes: true, childList: true, characterData: true}
             let observer = new MutationObserver(function (mutations) {
                 mutations.forEach(function (mutation) {
@@ -22,7 +21,7 @@
                 window.labApi.insertMessage('div wrapper found')
             } else {
                 window.labApi.insertMessage('div wrapper NOT found', false)
-                return true
+                return window.labApi.scriptCompleted()
             }
             
             if (!window.scriptexecutedLab2) {
@@ -35,8 +34,7 @@
 
             function runTest() {
                 window.labApi.typeInValue('3', input).then((text) => {
-                   // button.dispatchEvent(ev)
-                    
+                   
                     return window.labApi.triggerElementEvent(button, 'click')
                     
                 }).then(() => {

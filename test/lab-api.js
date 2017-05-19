@@ -26,6 +26,7 @@
         'insertMessage' : insertMessage,
         'scriptCompleted' : scriptCompleted,
         'triggerElementEvent' : triggerElementEvent,        
+        'selectValue' : selectValue,        
     }
     
     window.document.body.insertAdjacentHTML('beforeend',`<svg style="position: absolute; bottom:0px; right:0px" id="mouseCursor" viewBox="0 0 463.721 463.721" width="20px" height="20px">
@@ -51,9 +52,9 @@
 
         
 
-        let total = text.length;
-        let counter = 0;
-        let speed = 100;
+        let total = text.length
+        let counter = 0
+        let speed = 100
 
         return mouseToElementPosition(input).then(function() {
                 return new Promise((resolve, reject) => {
@@ -86,6 +87,36 @@
             } else {
                 resolve(text)
             }
+        }
+
+    }
+    
+    
+    function selectValue(val, input) {    
+
+        let total = input.length
+        let speed = 500
+        
+        return mouseToElementPosition(input).then(function() {
+                return new Promise((resolve, reject) => {
+
+                if (!input) {
+                    insertMessage('test failed for Select box', false )
+                    resolve(val)
+                }
+                setOption(resolve)
+
+            })
+        })
+
+        function setOption(resolve) {
+            if ( input.options[input.selectedIndex].value.toString() === val ) {
+                resolve(val)
+            } else {            
+                input.selectedIndex = (input.selectedIndex + 1) % input.length
+                window.setTimeout(setOption.bind(this, resolve), speed)
+            }
+
         }
 
     }
