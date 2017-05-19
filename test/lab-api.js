@@ -95,8 +95,9 @@
         
         let ev = new Event(evt, {"bubbles": true, "cancelable": false})
         
+        let away = ['blur'].indexOf(evt) > -1
         
-        return mouseToElementPosition(elem).then(function() {
+        return mouseToElementPosition(elem, away).then(function() {
                 return new Promise((resolve, reject) => {
 
                 
@@ -110,7 +111,7 @@
     }
     
     
-    function mouseToElementPosition(elem) {
+    function mouseToElementPosition(elem, away = false) {
         let pos = elem.getBoundingClientRect()
         let mouse = window.document.querySelector('#mouseCursor')
         let mpos = mouse.getBoundingClientRect()
@@ -123,8 +124,8 @@
                 'y' : parseInt(mpos.top, 10),
             },
             'to' : {
-                'x' : parseInt(pos.left+(pos.width/2), 10),
-                'y' : parseInt(pos.top+(pos.height/2), 10),
+                'x' : parseInt(pos.left+(away ? pos.width+10 : pos.width/2), 10),
+                'y' : parseInt(pos.top+(away ? pos.height+10 : pos.height/2), 10),
             },            
             'tweenX': [],
             'tweenY': [],
@@ -134,7 +135,7 @@
         let tweenAmountX = (info.to.x - info.from.x)/frameCount;
         let tweenAmountY = (info.to.y - info.from.y)/frameCount;
                
-        for (let i=0; i<frameCount; i++) {
+        for (let i=0; i<=frameCount; i++) {
             // calculate the points to animate
             info.tweenX.push(parseInt(info.from.x+(tweenAmountX*i),10))
             info.tweenY.push(parseInt(info.from.y+(tweenAmountY*i),10))
@@ -164,7 +165,7 @@
                 
     }
     
-    
+      
     
     
     
