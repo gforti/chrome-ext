@@ -13,20 +13,32 @@
 
 
             async function test(){
-                let i = await window.labApi.typeInValue('abc', input)
-                let x = await window.labApi.triggerElementEvent(input, 'blur')
-                return i + x         
+                await window.labApi.typeInValue('abc', input)
+                await window.labApi.triggerElementEvent(input, 'blur')
+                if (input.classList.contains('invalid')) {
+                    window.labApi.insertMessage('input Phone does contain invalid class')
+                } else {
+                    window.labApi.insertMessage('input Phone does not contain invalid class', false)
+                } 
+                await window.labApi.typeInValue('123', input)
+                await window.labApi.triggerElementEvent(input, 'blur')
+                
+                if (!input.classList.contains('invalid')) {
+                    window.labApi.insertMessage('input Phone does contain invalid class with correct value')
+                } else {
+                    window.labApi.insertMessage('input Phone does not contain invalid class', false)
+                }
+                await window.labApi.typeInValue('', input)
+                await window.labApi.triggerElementEvent(input, 'blur')
+                if (!input.classList.contains('invalid')) {
+                    window.labApi.insertMessage('input Phone does contain invalid class with correct value')
+                } else {
+                    window.labApi.insertMessage('input Phone does not contain invalid class', false)
+                }
                 
             }
             
             test().then(()=>{
-                if (input.classList.contains('invalid')) {
-                        window.labApi.insertMessage('input Phone does contain invalid class')
-                    } else {
-                        window.labApi.insertMessage('input Phone does not contain invalid class', false)
-                    } 
-            })
-                    .then(()=>{
                 return window.labApi.scriptCompleted()
             })
 
