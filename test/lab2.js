@@ -28,22 +28,18 @@
                 observer.observe(div, config)
             } 
             window.scriptexecutedLab2 = true;
-            runTest()
             
-            
+            runTest().then(()=>{
+                return window.labApi.scriptCompleted()
+            })
+                        
 
-            function runTest() {
-                window.labApi.typeInValue('3', input).then((text) => {
-                   
-                    return window.labApi.triggerElementEvent(button, 'click')
-                    
-                }).then(() => {
-                    return window.labApi.typeInValue('5', input).then((text) => {
-                        return window.labApi.triggerElementEvent(button, 'click')
-                    })
-                }).then(()=>{
-                    return window.labApi.scriptCompleted()
-                })
+            async function runTest() {
+                await window.labApi.typeInValue('3', input)
+                await window.labApi.triggerElementEvent(button, 'click')
+                await window.labApi.typeInValue('5', input)
+                await window.labApi.triggerElementEvent(button, 'click')       
+                     
             }
             
             
