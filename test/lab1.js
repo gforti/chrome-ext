@@ -11,6 +11,27 @@
                 return window.labApi.scriptCompleted()
             }
 
+
+            async function test(){
+                let i = await window.labApi.typeInValue('abc', input)
+                let x = await window.labApi.triggerElementEvent(input, 'blur')
+                return i + x         
+                
+            }
+            
+            test().then(()=>{
+                if (input.classList.contains('invalid')) {
+                        window.labApi.insertMessage('input Phone does contain invalid class')
+                    } else {
+                        window.labApi.insertMessage('input Phone does not contain invalid class', false)
+                    } 
+            })
+                    .then(()=>{
+                return window.labApi.scriptCompleted()
+            })
+
+
+/*
             window.labApi.typeInValue('abc', input).then((r) => {
                 //input.dispatchEvent(ev)
                 return window.labApi.triggerElementEvent(input, 'blur').then(()=>{
@@ -40,6 +61,6 @@
                 return window.labApi.scriptCompleted()
             })
 
-        
+        */
 
 })()

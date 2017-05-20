@@ -27,6 +27,8 @@
         'scriptCompleted' : scriptCompleted,
         'triggerElementEvent' : triggerElementEvent,        
         'selectValue' : selectValue,        
+        'getRandomSelectValue' : getRandomSelectValue,        
+        'randNode' : randNode,        
     }
     
     window.document.body.insertAdjacentHTML('beforeend',`<svg style="position: absolute; bottom:0px; right:0px" id="mouseCursor" viewBox="0 0 463.721 463.721" width="20px" height="20px">
@@ -92,10 +94,18 @@
     }
     
     
+    function getRandomSelectValue(input) {
+        return input.options[~~(window.Math.random() *input.length)].value
+    }
+    
+    function randNode(nodes) {
+        return nodes[~~(window.Math.random() * nodes.length)]
+    }
+    
     function selectValue(val, input) {    
 
         let total = input.length
-        let speed = 500
+        let speed = 200
         
         return mouseToElementPosition(input).then(function() {
                 return new Promise((resolve, reject) => {
@@ -111,7 +121,9 @@
 
         function setOption(resolve) {
             if ( input.options[input.selectedIndex].value.toString() === val ) {
-                resolve(val)
+                triggerElementEvent(input, 'change').then(()=>{
+                    resolve(val)
+                })                
             } else {            
                 input.selectedIndex = (input.selectedIndex + 1) % input.length
                 window.setTimeout(setOption.bind(this, resolve), speed)
@@ -133,7 +145,7 @@
 
                 
                 elem.dispatchEvent(ev)
-                resolve()
+                resolve(elem)
 
             })
         })
