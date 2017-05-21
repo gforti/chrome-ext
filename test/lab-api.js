@@ -43,6 +43,7 @@
     function insertMessage(msg, pass = true) {
         let html = '<p class="'+ (!!pass ? 'pass' : 'fail') +'">' + msg + '</p>'
         LAB_RESULTS.insertAdjacentHTML('beforeend', html)
+        LAB_RESULTS.scrollTop = LAB_RESULTS.scrollHeight;
     }
     
     function uuid() {
