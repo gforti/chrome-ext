@@ -1,8 +1,6 @@
 (()=>{
     
     
-    console.log(window.scriptexecutedLabAPI);
-        
     const DIV_ID = 'labResults-rnt7dvtto9'
     
     if ( !window.document.querySelector('#'+DIV_ID) ) {
