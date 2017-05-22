@@ -30,9 +30,20 @@
         'mouseToElementPosition' : mouseToElementPosition,        
     }
     
-    window.document.body.insertAdjacentHTML('beforeend',`<svg style="position: absolute; bottom:0px; right:0px" id="mouseCursor" viewBox="0 0 463.721 463.721" width="20px" height="20px">
-            <path d="M407.453,224.871c0.85-6.517-1.983-13.317-7.65-16.717L82.186,2.737c-5.1-3.4-11.9-3.683-17.283-0.567    c-5.383,3.117-8.783,8.783-8.783,15.017v363.233c0,6.517,3.683,12.183,9.35,15.3c5.667,2.833,12.75,2.267,17.85-1.7l90.1-67.433    l82.45,129.2c3.117,5.1,8.783,7.933,14.45,7.933c2.833,0,5.95-0.85,8.5-2.267l84.15-48.733c3.967-2.267,6.8-6.233,7.933-10.767    c1.133-4.533,0.283-9.35-2.267-13.033l-76.783-120.983l103.7-29.183C401.786,236.771,406.603,231.387,407.453,224.871z     M260.403,241.304c-5.1,1.417-9.35,5.383-11.333,10.2c-1.983,5.1-1.417,10.767,1.417,15.3l79.333,125.233l-54.683,31.733    l-83.017-130.9c-2.55-3.967-6.517-6.8-11.333-7.65c-1.133-0.283-1.983-0.283-3.117-0.283c-3.683,0-7.083,1.133-10.2,3.4    l-77.633,58.083V48.354l260.1,168.017L260.403,241.304z" fill="#D80027" />
-	</svg>`)
+    window.document.body.insertAdjacentHTML('beforeend',`<img style="position: absolute; bottom:0px; right:0px" id="mouseCursor" src="data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTYuMC4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgd2lkdGg9IjI0cHgiIGhlaWdodD0iMjRweCIgdmlld0JveD0iMCAwIDc2Ni40MzggNzY2LjQzOCIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgNzY2LjQzOCA3NjYuNDM4OyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+CjxnPgoJPHBhdGggZD0iTTQuMzM4LDMuOTg4bC0wLjMsMC4zYy0zLjgsMy44LTUsOS42LTMuMSwxNC42bDI2Mi4yLDY4Mi4xYzIsNS4yLDcsOC43LDEyLjYwMSw4LjhjNS42LDAuMTAxLDEwLjY5OS0zLjMsMTIuOC04LjM5OSAgIGw4My4zLTIwMC4ybDI1OS40LDI1OS40YzcuOCw3LjgsMjAuNSw3LjgsMjguMywwYzI3LjgtMjcuODAxLDczLjItNzMuMiwxMDEtMTAxYzcuOC03LjgwMSw3LjgtMjAuNSwwLTI4LjMwMWwtMjU5LjMtMjU5LjM5OSAgIGwyMDAuMS04My4zYzUuMi0yLjIsOC41LTcuMiw4LjQtMTIuOGwwLDBjLTAuMTAxLTUuNi0zLjYwMS0xMC42LTguODAxLTEyLjZsLTY4Mi0yNjIuM0MxMy44MzgtMS4wMTIsOC4xMzgsMC4xODgsNC4zMzgsMy45ODh6IiBmaWxsPSIjMDA2REYwIi8+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPC9zdmc+Cg==" />`)
+    
+    
+    function setCursorToEventImg() {
+        let mouse = window.document.querySelector('#mouseCursor')
+        let src = 'data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTYuMC4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgd2lkdGg9IjI0cHgiIGhlaWdodD0iMjRweCIgdmlld0JveD0iMCAwIDkxMC41IDkxMC41IiBzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6bmV3IDAgMCA5MTAuNSA5MTAuNTsiIHhtbDpzcGFjZT0icHJlc2VydmUiPgo8Zz4KCTxwYXRoIGQ9Ik0yMTYuODEzLDIyOC41aDczLjVjMTMuOCwwLDI1LTExLjIsMjUtMjVzLTExLjItMjUtMjUtMjVoLTczLjVjLTEzLjgsMC0yNSwxMS4yLTI1LDI1UzIwMy4wMTMsMjI4LjUsMjE2LjgxMywyMjguNXoiIGZpbGw9IiNEODAwMjciLz4KCTxwYXRoIGQ9Ik00MjAuMzEzLDk4LjVWMjVjMC0xMy44LTExLjItMjUtMjUtMjVzLTI1LDExLjItMjUsMjV2NzMuNWMwLDEzLjgsMTEuMiwyNSwyNSwyNVM0MjAuMzEzLDExMi4zLDQyMC4zMTMsOTguNXoiIGZpbGw9IiNEODAwMjciLz4KCTxwYXRoIGQ9Ik01NzMuODEzLDIyOC41YzEzLjgsMCwyNS0xMS4yLDI1LTI1cy0xMS4yLTI1LTI1LTI1aC03My41Yy0xMy44LDAtMjUsMTEuMi0yNSwyNXMxMS4yLDI1LDI1LDI1SDU3My44MTN6IiBmaWxsPSIjRDgwMDI3Ii8+Cgk8cGF0aCBkPSJNNzA1LjIxMyw3NTUuNGMxMi4xLTIwLjMwMSwxOC41LTQzLjUsMTguNS02Ny4yVjUyOC45YzAtMTkuNS0xMi41LTM2LjgwMS0zMS4xMDEtNDIuODAxICAgYy01NS41LTE4LjEtMTY3LjUtNTQuMTk5LTE4NC42LTU3LjZjLTE5LjctMy45LTM4LjEwMS0wLjItNDcuOSw4LjRoLTAuMWMwLDAsMCwwLDAtMC4xMDFjLTAuNS00LjUtMjUuOS0yNTAuNS0yNS45LTI1MC43ICAgYy0yLjM5OS0yMS4zLTIwLjM5OS0zMS4zLTM4LjItMzAuN2MtMTkuMSwwLjctMzcsMTYuMi0zNi44OTksMzYuMWwtMC4yLDQwNC4zYzAsNC44LTMuNSw4LjgtOC4zLDkuNWMtMC4xMDEsMC0wLjEwMSwwLTAuMiwwICAgYy0wLjUsMC4xMDEtMSwwLjEwMS0xLjUsMC4xMDFjLTEzLjYtMC40LTQ0LjMtMC44MDEtNzQuMi00NC4xMDFjLTQtNS43LTcuNi0xMC44OTktMTAuODk5LTE1LjdjLTI4LjUtNDAuODk5LTgzLjktMTguMy03Ni4yLDI4LjIgICBjNy4yLDQzLjMsNTQuNiwxNDQuMiwxNDgsMjM4LjhoMzM1LjhMNzA1LjIxMyw3NTUuNHoiIGZpbGw9IiNEODAwMjciLz4KCTxwYXRoIGQ9Ik0zMzUuNzEzLDg5MC41YzAsMTEsOSwyMCwyMCwyMGgyOTUuNmMxMSwwLDIwLTksMjAtMjB2LTQ1LjhoLTMzNS42Vjg5MC41eiIgZmlsbD0iI0Q4MDAyNyIvPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+Cjwvc3ZnPgo='
+        mouse.src = src
+    }
+    
+     function resetCursorImg() {
+        let mouse = window.document.querySelector('#mouseCursor')
+        let src = 'data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTYuMC4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgd2lkdGg9IjI0cHgiIGhlaWdodD0iMjRweCIgdmlld0JveD0iMCAwIDc2Ni40MzggNzY2LjQzOCIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgNzY2LjQzOCA3NjYuNDM4OyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+CjxnPgoJPHBhdGggZD0iTTQuMzM4LDMuOTg4bC0wLjMsMC4zYy0zLjgsMy44LTUsOS42LTMuMSwxNC42bDI2Mi4yLDY4Mi4xYzIsNS4yLDcsOC43LDEyLjYwMSw4LjhjNS42LDAuMTAxLDEwLjY5OS0zLjMsMTIuOC04LjM5OSAgIGw4My4zLTIwMC4ybDI1OS40LDI1OS40YzcuOCw3LjgsMjAuNSw3LjgsMjguMywwYzI3LjgtMjcuODAxLDczLjItNzMuMiwxMDEtMTAxYzcuOC03LjgwMSw3LjgtMjAuNSwwLTI4LjMwMWwtMjU5LjMtMjU5LjM5OSAgIGwyMDAuMS04My4zYzUuMi0yLjIsOC41LTcuMiw4LjQtMTIuOGwwLDBjLTAuMTAxLTUuNi0zLjYwMS0xMC42LTguODAxLTEyLjZsLTY4Mi0yNjIuM0MxMy44MzgtMS4wMTIsOC4xMzgsMC4xODgsNC4zMzgsMy45ODh6IiBmaWxsPSIjMDA2REYwIi8+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPC9zdmc+Cg=='
+        mouse.src = src
+    }
     
     
     function scriptCompleted() {
@@ -52,7 +63,6 @@
     
     function typeInValue(text, input) {
 
-        
 
         let total = text.length
         let counter = 0
@@ -139,12 +149,15 @@
         let ev = new Event(evt, {"bubbles": true, "cancelable": false})
         
         let away = ['blur'].indexOf(evt) > -1
+        if ( !away ) {
+            setCursorToEventImg()
+        }
         
         return mouseToElementPosition(elem, away).then(function() {
                 return new Promise((resolve, reject) => {
-
                 
                 elem.dispatchEvent(ev)
+                resetCursorImg()
                 resolve(elem)
 
             })
