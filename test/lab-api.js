@@ -66,7 +66,7 @@
 
         let total = text.length
         let counter = 0
-        let speed = 100
+        let speed = 1000
 
         return mouseToElementPosition(input).then(function() {
                 return new Promise((resolve, reject) => {
