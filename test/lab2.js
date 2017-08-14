@@ -1,7 +1,7 @@
 (() => {
 
     let input = window.document.querySelector('#num')
-    let button = window.document.querySelector('#btnGenerate')
+    let button = window.document.querySelector('#btnGenerate') || window.document.querySelector('#btngenerate')
     let div = window.document.querySelector('#wrapper')
 
     const config = {attributes: true, childList: true, characterData: true}
@@ -14,7 +14,7 @@
 
 
     if (div) {
-        window.labApi.insertMessage('div wrapper found')
+        window.labApi.insertMessage('div wrapper found')		
     } else {
         window.labApi.insertMessage('div wrapper NOT found', false)
         return window.labApi.scriptCompleted()
@@ -37,6 +37,12 @@
 
 
     async function handleChange(target, numberToGenerate) {
+		
+		if ( !div.innerHTML.length ) {
+			 window.labApi.insertMessage('div wrapper empty', false)
+			return window.labApi.scriptCompleted()
+		}
+		
         let tableDom = target.querySelector('table')
         let rows = tableDom.querySelectorAll('tr')
         let td = tableDom.querySelectorAll('td')
@@ -65,10 +71,10 @@
 
             let error = ''
 
-            if (num % 2 === 0) { // red 
+            if (num % 3 === 0) { // red 
                 if (red === 0)
                     error = 'red'
-            } else if (num % 3 === 0) { //blue                        
+            } else if (num % 2 === 0) { //blue                        
                 if (blue === 0)
                     error = 'blue'
             } else if (![red, green, blue].every((currentValue, index, items) => currentValue === items[0])) {
